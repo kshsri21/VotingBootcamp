@@ -12,6 +12,7 @@ const Web3Provider = ({children})=>{
   })
   const handleWallet = async()=>{
     try{
+
         const {contractInstance,selectedAccount,chainId} = await getWeb3State();
         setWeb3State({contractInstance,selectedAccount,chainId})
     }catch(error){
@@ -30,10 +31,10 @@ const Web3Provider = ({children})=>{
   
   return (
     <> 
-      <Web3Context.Provider value={web3State}>
+      <Web3Context.Provider value={{web3State,handleWallet}}>
         {children}
       </Web3Context.Provider>
-      <button onClick={handleWallet}>Connect Wallet</button>
+     
     </>
   )
 }
