@@ -1,7 +1,8 @@
 import {useWeb3Context} from "../../../context/Web3Provider.jsx";
 
 export default function EmergencyStopVoting() {
-   const {contractInstance} = useWeb3Context()
+   const {web3State} = useWeb3Context()
+   const {contractInstance} = web3State;
 
    const emergencyStop = async () => {
       await contractInstance.emergencyStopVoting()

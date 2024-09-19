@@ -5,12 +5,42 @@ import RegisterCandidate from "../pages/Candidate/RegisterCandidate";
 import RegisterVoter from "../pages/Voter/RegisterVoter"
 import ElectionCommision from "../pages/ElectionCommision/ElectionCommision";
 import Wallet from "../components/Wallet/Wallet";
+import Navigation from "../components/Navigation/Navigation";
 export const routes = createBrowserRouter([
-    {path:'/',element:<Wallet/>},
-    {path:'register-voter',element:<RegisterVoter></RegisterVoter>},
-    {path:'register-candidate',element:<RegisterCandidate></RegisterCandidate>},
-    {path:'voter-list',element:<GetVoterList></GetVoterList>},
-    {path:'candidate-list',element:<GetCandidateList></GetCandidateList>},
-    {path:'election-commision',element:<ElectionCommision></ElectionCommision>},
+    {path:'/',element:(
+    <div>
+      <Wallet/>
+    </div>
+    )},
+    {path:'register-voter',element:(
+        <div>
+          <Navigation/>
+          <RegisterVoter/>
+        </div>
+        )},
+    {path:'register-candidate',element:(
+        <div>
+          <Navigation/>
+          <RegisterCandidate/>
+        </div>
+        )},
+    {path:'voter-list',element:(
+        <div>
+          <Navigation/>
+          <GetVoterList/>
+        </div>
+        )},
+    {path:'candidate-list',element:(
+        <div>
+          <Navigation/>
+          <GetCandidateList/>
+        </div>
+        )},
+    {path:'election-commision',element:(
+        <div>
+          <Navigation/>
+          <ElectionCommision/>
+        </div>
+        )},
 
 ])
