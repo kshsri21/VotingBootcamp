@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useWeb3Context } from "../../context/useWeb3Context";
-
+import axios from "axios";
 const RegisterCandidate = ()=>{
   const {web3State} = useWeb3Context()
   const {contractInstance} = web3State;
@@ -11,13 +11,26 @@ const RegisterCandidate = ()=>{
   const handleCandidateRegistration=async(e)=>{
       try{
         e.preventDefault();
-        const name = nameRef.current.value;
-        const age = ageRef.current.value;
-        const gender = genderRef.current.value;
-        const party = partyRef.current.value;
-        console.log(name,age,gender,party)
-        await contractInstance.registerCandidate(name,party,age,gender)
-        console.log("Registration is successful")
+        const token  = localStorage.getItem("token");
+        console.log(token);
+    
+        // Set headers in config
+        const config = {
+            headers: {
+                'x-access-token': token
+            }
+        };
+    
+        // Send the post request with an empty body (or any data if required)
+        const res = await axios.post("http://localhost:3000/api/postCandidateImage", {}, config);
+        // console.log(res.data)
+        // const name = nameRef.current.value;
+        // const age = ageRef.current.value;
+        // const gender = genderRef.current.value;
+        // const party = partyRef.current.value;
+        // console.log(name,age,gender,party)
+        // await contractInstance.registerCandidate(name,party,age,gender)
+        // console.log("Registration is successful")
       }catch(error){
         console.error(error)
       }
