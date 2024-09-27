@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useWeb3Context } from "../../context/useWeb3Context";
 import axios from "axios";
+import { uploadCanidateImage } from "../../utils/uploadCanidateImage";
 const RegisterCandidate = ()=>{
+  const [file,setFile] = useState("")
   const {web3State} = useWeb3Context()
   const {contractInstance} = web3State;
   const nameRef = useRef(null);
@@ -12,17 +14,16 @@ const RegisterCandidate = ()=>{
       try{
         e.preventDefault();
         const token  = localStorage.getItem("token");
-        console.log(token);
-    
+  
         // Set headers in config
         const config = {
             headers: {
                 'x-access-token': token
             }
         };
-    
+        await uploadCanidateImage(file)
         // Send the post request with an empty body (or any data if required)
-        const res = await axios.post("http://localhost:3000/api/postCandidateImage", {}, config);
+        //const res = await axios.post("http://localhost:3000/api/postCandidateImage", {}, config);
         // console.log(res.data)
         // const name = nameRef.current.value;
         // const age = ageRef.current.value;
@@ -51,6 +52,8 @@ const RegisterCandidate = ()=>{
         </label>
         <button type="submit">Register</button>
     </form>
+    <input type="file" onChange={(e)=>setFile(e.target.files[0])}></input>
+   
   </>)
 }
 export default RegisterCandidate;
