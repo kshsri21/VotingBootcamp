@@ -20,7 +20,8 @@ export const getWeb3State = async()=>{
         const provdier = new ethers.BrowserProvider(window.ethereum)
 
         const signer = await provdier.getSigner()
-        const contractAddress = "0x83A8cB9f282DD6763bca9c4bcf7977a4f5C77aB5";
+         const contractAddress = "0x83A8cB9f282DD6763bca9c4bcf7977a4f5C77aB5";
+        
 
         const message = "Welcome to Voting Dapp. You accept our terms and condition"
         const signature = await signer.signMessage(message);
