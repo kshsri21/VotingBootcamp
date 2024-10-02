@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { useWeb3Context } from "../../context/useWeb3Context";
+import {toast} from "react-hot-toast"
 
 const VotingTimePeriod = ()=>{
   const {web3State} = useWeb3Context()
@@ -17,6 +18,7 @@ const VotingTimePeriod = ()=>{
         // await contractInstance.setVotingPeriod(startTime,endTime)
         // console.log("Voter Time is set successful")
       }catch(error){
+        toast.error("Error: Voting Time Period")
         console.error(error)
       }
   }

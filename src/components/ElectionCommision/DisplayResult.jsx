@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-
+import React, { useState,useEffect } from 'react'
+import { useWeb3Context } from "../../context/useWeb3Context";
+import {toast} from "react-hot-toast"
 const DisplayResult = () => {
         
     const {web3State} = useWeb3Context()
@@ -15,6 +16,7 @@ const DisplayResult = () => {
             }
   
           }catch(error){
+            toast.error("Error: Getting Winner")
             console.error(error)
           }
         }
@@ -22,7 +24,7 @@ const DisplayResult = () => {
       },[])
   return (
     <div>
-      <h1>Winner: {winner}</h1>
+      <h3>Winner: {winner}</h3>
     </div>
   )
 }

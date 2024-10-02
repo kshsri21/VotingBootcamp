@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useWeb3Context } from "../../context/useWeb3Context";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-hot-toast"
 import "./GetCandidateList.css"
 
 const GetCandidateList =  ()=>{
@@ -24,6 +25,7 @@ const GetCandidateList =  ()=>{
         const candidateList = await contractInstance.getCandidateList();
         setCandidateList(candidateList)
       }catch(error){
+        toast.error("Error: Getting Candidate List")
         console.error(error)
       }
     }

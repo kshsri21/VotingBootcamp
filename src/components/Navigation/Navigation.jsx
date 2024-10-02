@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import {toast} from "react-hot-toast"
 import "./Navigation.css";
 const Navigation = () =>{
     return(
@@ -11,6 +12,7 @@ const Navigation = () =>{
             <li><Link to="/voter-list">Voter List</Link></li>
             <li><Link to="/candidate-list">Candidate List</Link></li>
             <li><Link to="/election-commision">Election Commision</Link></li>
+            <li><Link to="/token-marketplace">Token Marketplace</Link></li>
         </ul>
       </nav>
     </header>

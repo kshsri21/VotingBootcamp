@@ -1,8 +1,8 @@
-// RegisterCandidate.js
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";  // Import useNavigate
 import { useWeb3Context } from "../../context/useWeb3Context";
 import { uploadCandidateImage } from "../../utils/uploadCandidateImage"; // Correct spelling
+import {toast} from "react-hot-toast"
 import "./RegisterCandidate.css"
 
 const RegisterCandidate = () => {
@@ -23,12 +23,20 @@ const RegisterCandidate = () => {
   const partyRef = useRef(null);
   const ageRef = useRef(null);
 
+  // Gender Enum Mapping
+  const genderEnum = {
+    NotSpecified: 0,
+    Male: 1,
+    Female: 2,
+    Other: 3,
+  };
+
   const handleCandidateRegistration = async (e) => {
     e.preventDefault();
     try {
       const name = nameRef.current.value;
       const age = ageRef.current.value;
-      const gender = genderRef.current.value;
+      const gender = genderRef.current.value;  // Numeric value from dropdown
       const party = partyRef.current.value;
 
       if (!contractInstance) {
@@ -43,14 +51,14 @@ const RegisterCandidate = () => {
         ageRef.current.value = "";
         genderRef.current.value = "";
         partyRef.current.value = "";
-        alert("Registration Successful")
+        alert("Registration Successful");
         setFile(null);
       } else {
         throw new Error("Candidate Registration Failed!");
       }
     } catch (error) {
+      toast.error("Error: Registering Candidate")
       console.error(error);
-      alert("Registration Failed")
     }
   };
 
@@ -59,13 +67,22 @@ const RegisterCandidate = () => {
       <br></br>
       <form onSubmit={handleCandidateRegistration}>
         <label>Candidate Name:</label>
-          <input type="text" ref={nameRef} required />
+        <input type="text" ref={nameRef} required />
+        
         <label>Candidate Age:</label>
-          <input type="text" ref={ageRef} required />
+        <input type="text" ref={ageRef} required />
+        
         <label>Gender:</label>
-          <input type="text" ref={genderRef} required />
+        <select ref={genderRef} required>
+          <option value={genderEnum.NotSpecified}>Not Specified</option>
+          <option value={genderEnum.Male}>Male</option>
+          <option value={genderEnum.Female}>Female</option>
+          <option value={genderEnum.Other}>Other</option>
+        </select>
+        
         <label>Candidate Party:</label>
-          <input type="text" ref={partyRef} required />
+        <input type="text" ref={partyRef} required />
+        
         <br></br>
         <button type="submit">Register</button>
       </form>
@@ -76,8 +93,7 @@ const RegisterCandidate = () => {
         onChange={(e) => setFile(e.target.files[0])} 
         required
       />
-   </div>
-    
+    </div>
   );
 };
 
