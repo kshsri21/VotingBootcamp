@@ -6,6 +6,8 @@ import RegisterVoter from "../pages/Voter/RegisterVoter"
 import ElectionCommision from "../pages/ElectionCommision/ElectionCommision";
 import Wallet from "../components/Wallet/Wallet";
 import Navigation from "../components/Navigation/Navigation";
+import TokenExchange from "../pages/TokenMarketplace/TokenMarketplace"
+
 export const routes = createBrowserRouter([
     {path:'/',element:(
     <div>
@@ -42,5 +44,11 @@ export const routes = createBrowserRouter([
           <ElectionCommision/>
         </div>
         )},
+    {path:"/token-marketplace",element:(
+          <div>
+              <Navigation/>
+              <TokenExchange/>
+          </div>
+      )},
 
 ])

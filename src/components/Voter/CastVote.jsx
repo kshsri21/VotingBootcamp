@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useWeb3Context } from "../../context/useWeb3Context";
-
+import {toast} from "react-hot-toast"
 const castVote = ()=>{
   const {web3State} = useWeb3Context()
   const {contractInstance} = web3State;
@@ -12,11 +12,9 @@ const castVote = ()=>{
         e.preventDefault();
         const voterId = voterIdRef.current.value;
         const candidateId = candidateIdRef.current.value;
-       
-        console.log(voterId,candidateId)
-        // await contractInstance.castVote(voter,candidate)
-        // console.log("Voted successful")
+        await contractInstance.castVote(voterId,candidateId)
       }catch(error){
+        toast.error("Error: Casting Vote")
         console.error(error)
       }
   }

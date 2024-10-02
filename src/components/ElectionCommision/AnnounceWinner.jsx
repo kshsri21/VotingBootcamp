@@ -1,14 +1,18 @@
 import {useEffect, useState} from "react";
-import {useWeb3Context} from "../../../context/Web3Provider.jsx";
-
+import { useWeb3Context } from "../../context/useWeb3Context";
+import {toast} from "react-hot-toast"
 export default function AnnounceWinner() {
-   const [winner, setWinner] = useState()
    const {web3State} = useWeb3Context()
    const {contractInstance} = web3State;
    const getWinner = async () => {
-         const winner = await contractInstance.announceVotingResult()
-         console.log(winner)
-         setWinner(winner)
+      try{
+         const tx = await contractInstance.announceVotingResult()
+         const receipt = await tx.wait();
+      }catch(error){
+         toast.error("Error: Announcing result")
+         console.error(error)
+      }
+        
     }
  
    return <div>
