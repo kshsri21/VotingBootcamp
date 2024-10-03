@@ -1,16 +1,40 @@
-# Voting DApp - Overview
+# Voting DApp
 
-This project is a decentralized Voting DApp built on the Ethereum blockchain. It includes key components such as the `ElectionCommission` for managing election processes and `TokenMarketplace` for handling token transactions.
+This is a decentralized voting application built on the Ethereum blockchain.
+### Installation
 
-## Components Overview
+ Install the required dependencies using npm :
 
-- **ElectionCommission**: Manages voter and candidate registrations, election results, and governance functions.
-- **TokenMarketplace**: Allows users to buy and sell tokens within the DApp. The UI is designed for an intuitive and seamless experience.
+```
+npm install
+```
 
-Both components have been styled using Tailwind CSS and are fully responsive for both desktop and mobile views.
+### Running the Client :
 
-### Features
-- Voter and candidate registration
-- Casting votes
-- Managing election commission
-- Token trading platform with price adjustments based on demand
+To run the client application locally, use the start command.
+
+```
+npm run dev
+```
+ The application will be available at `http://localhost:5173`.
+
+
+## Contract Address :
+
+1) Erc20 address : 
+```
+0x9B7Cb4A602882A2dE17Cb0Fb01564E9005a446fC
+```
+
+2) Token Marketplace Address :
+```
+0xB576C4724FB60B17Aa898A620D1A868c69a0C8b5
+```
+
+3) Voting Contract Address :
+
+```
+0x567d07b0Cfa471a0dc87Ff80bC4915C64Dd031a2
+```
+
+
