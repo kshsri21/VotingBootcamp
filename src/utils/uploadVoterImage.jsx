@@ -1,3 +1,4 @@
+// uploadCandidateImage.js
 import axios from "axios";
 
 export const uploadVoterImage = async (file) => {
@@ -15,6 +16,7 @@ export const uploadVoterImage = async (file) => {
     };
     const res = await axios.post("http://localhost:3000/api/postVoterImage", formData, config);
     console.log(res)
+    
     if (res.data.message === "successful") { 
       return true;
     }

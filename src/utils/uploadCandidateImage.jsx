@@ -16,6 +16,7 @@ export const uploadCandidateImage = async (file) => {
     };
     const res = await axios.post("http://localhost:3000/api/postCandidateImage", formData, config);
     console.log(res)
+    
     if (res.data.message === "successful") { 
       return true;
     }
